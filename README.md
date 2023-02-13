@@ -9,7 +9,7 @@ generate the bill and manage the list of customers waiting for a table.
 Managers will use Feast to help operate their restaurants, 
 and this application would be applicable to every restaurant after an adaption.
 Developing an application for restaurant operations sounds practical. 
-I love to apply what I learn in real life. Also, 
+I love to apply what I learned in real life. Also, 
 I dream of having a restaurant and hope to use my self-developed 
 application to help operate my own restaurant.
 
