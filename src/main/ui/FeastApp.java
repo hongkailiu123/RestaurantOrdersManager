@@ -10,7 +10,7 @@ import java.util.Scanner;
 // Restaurant operations application - Feast
 public class FeastApp {
     private ArrayList<Table> tables;
-    private ArrayList<Customer> waitlist = new ArrayList<Customer>();
+    private ArrayList<Customer> waitlist = new ArrayList<>();
     private Scanner input;
     int tableNum;
 
@@ -188,7 +188,7 @@ public class FeastApp {
         String status = "Available tables: ";
 
         for (Table table : tables) {
-            if (table.getStatus() == true) {
+            if (table.getStatus()) {
                 status = status.concat("\nTable " + table.getTableNumber() + " is available.");
             }
         }
@@ -231,7 +231,6 @@ public class FeastApp {
     //          print "There is no customer in the waitlist" if the waitlist is empty
     private void removeCustomerFromWaitlist() {
         boolean keepGoing = true;
-        Customer removeCustomer;
         while (keepGoing) {
             System.out.println("Do you want to get the first customer off the waitlist (yes or no)?");
             System.out.println("Entry T if no more customers");
@@ -262,15 +261,13 @@ public class FeastApp {
             selectedNum = input.nextInt();
         }
         int searchNum = selectedNum - 1;
-        Table selectedTable = tables.get(searchNum);
-        return selectedTable;
+        return tables.get(searchNum);
     }
 
     // EFFECTS: looks for the item in the order list according to the item name.
     //          returns that item if found, otherwise null;
     private Item lookForItem(String itemName, ArrayList<Item> orderList) {
-        for (int i = 0; i < orderList.size(); i++) {
-            Item targetItem = orderList.get(i);
+        for (Item targetItem : orderList) {
             String name = targetItem.getName();
             if (name.contentEquals(itemName)) {
                 return targetItem;
