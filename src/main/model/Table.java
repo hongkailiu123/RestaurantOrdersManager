@@ -28,7 +28,6 @@ public class Table {
      * EFFECTS: an item is added to this table's order list
      *          its price is added to this table's total amount
      */
-
     public void addItem(Item item) {
         orderList.add(item);
         this.totalAmount += item.getPrice();
@@ -41,7 +40,6 @@ public class Table {
      * EFFECTS: an item is removed from this table's order list
      *          its price is subtracted from this table's total amount
      */
-
     public void removeItem(Item item) {
         orderList.remove(item);
         this.totalAmount -= item.getPrice();
@@ -57,7 +55,6 @@ public class Table {
     /*
      * EFFECTS: return this table's table number
      */
-
     public int getTableNumber() {
         return tableNum;
     }
@@ -65,7 +62,6 @@ public class Table {
     /*
      * EFFECTS: return this table's order list
      */
-
     public ArrayList<Item> getOrderList() {
         return orderList;
     }
@@ -73,7 +69,6 @@ public class Table {
     /*
      * EFFECTS: return this table's total amount
      */
-
     public double getTotalAmount() {
         return totalAmount;
     }
@@ -82,7 +77,6 @@ public class Table {
      * MODIFIES: this
      * EFFECTS: set this table's status
      */
-
     public void setStatus(boolean status) {
         this.status = status;
     }
@@ -92,7 +86,6 @@ public class Table {
      *          all the items ordered with item name, item price, and
      *          the total amount of the bill
      */
-
     public String getBill() {
         String result = "";
         for (Item item: orderList) {

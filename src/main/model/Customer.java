@@ -1,5 +1,6 @@
 package model;
 
+// Represents a customer (waiting for a table) having a String name and an Integer phone number
 public class Customer {
     private String name;
     private int phoneNumber;

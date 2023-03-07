@@ -2,17 +2,23 @@ package ui;
 
 import model.Customer;
 import model.Item;
+import model.Restaurant;
 import model.Table;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 // Restaurant operations application - Feast
 public class FeastApp {
-    private ArrayList<Table> tables;
-    private ArrayList<Customer> waitlist = new ArrayList<>();
+    private Restaurant myRestaurant;
+//    private ArrayList<Table> tables;
+//    private List<Customer> waitlist = new LinkedList<>();
     private Scanner input;
-    int tableNum;
+    private int tableNum;
+    private String bossName;
+
 
     // EFFECTS: runs the feast app
     public FeastApp() {
@@ -27,8 +33,9 @@ public class FeastApp {
         String nextAction;
 
         askTableNum();
-        tableNum = input.nextInt();
-        setTables(tableNum);
+        askBossName();
+        myRestaurant = new Restaurant(bossName, tableNum);
+//        setTables(tableNum);
 
         while (!stop) {
             possibleNextStep();
@@ -46,17 +53,24 @@ public class FeastApp {
         System.out.println("Entry the number of tables that are ready for guests in your restaurant (Integer).");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        tableNum = input.nextInt();
     }
 
-    // MODIFIES: this
-    // EFFECTS: initials the tables in the user's restaurant
-    private void setTables(int tableNum) {
-        tables = new ArrayList<>();
-        for (int i = 0; i < tableNum; i++) {
-            Table newTable = new Table();
-            tables.add(newTable);
-        }
+    // EFFECTS: prompts the user entry the boss name
+    private void askBossName() {
+        System.out.println("Entry the boss name (String).");
+        bossName = input.next();
     }
+
+//    // MODIFIES: this
+//    // EFFECTS: initials the tables in the user's restaurant
+//    private void setTables(int tableNum) {
+//        tables = new ArrayList<>();
+//        for (int i = 0; i < tableNum; i++) {
+//            Table newTable = new Table();
+//            tables.add(newTable);
+//        }
+//    }
 
     // EFFECTS: displays the menu of next steps to the user
     private void possibleNextStep() {
@@ -186,6 +200,7 @@ public class FeastApp {
     // EFFECTS: displays all available tables. If no available table, print "No available table"
     private void checkStatusForAllTable() {
         String status = "Available tables: ";
+        List<Table> tables = myRestaurant.getTables();
 
         for (Table table : tables) {
             if (table.getStatus()) {
@@ -204,6 +219,7 @@ public class FeastApp {
     private void addCustomerToWaitlist() {
         boolean keepGoing = true;
         Customer newCustomer;
+        List<Customer> waitlist = myRestaurant.getWaitlist();
 
         while (keepGoing) {
             System.out.println("Entry the customer's name (Customer name)");
@@ -231,6 +247,8 @@ public class FeastApp {
     //          print "There is no customer in the waitlist" if the waitlist is empty
     private void removeCustomerFromWaitlist() {
         boolean keepGoing = true;
+        List<Customer> waitlist = myRestaurant.getWaitlist();
+
         while (keepGoing) {
             System.out.println("Do you want to get the first customer off the waitlist (yes or no)?");
             System.out.println("Entry T if no more customers");
@@ -255,6 +273,7 @@ public class FeastApp {
     // EFFECTS: promotes the user entry a table number, and returns the table the user selected.
     private Table select() {
         int selectedNum = -1;
+        List<Table> tables = myRestaurant.getTables();
 
         while (!(0 < selectedNum && selectedNum <= tableNum)) {
             System.out.println("Entry the table Number (Integer in [1, table number])");
