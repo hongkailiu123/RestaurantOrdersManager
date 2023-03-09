@@ -5,16 +5,13 @@ import model.Item;
 import model.Restaurant;
 import model.Table;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Scanner;
 
 // Restaurant operations application - Feast
 public class FeastApp {
     private Restaurant myRestaurant;
-//    private ArrayList<Table> tables;
-//    private List<Customer> waitlist = new LinkedList<>();
     private Scanner input;
     private int tableNum;
     private String bossName;
@@ -34,8 +31,8 @@ public class FeastApp {
 
         askTableNum();
         askBossName();
-        myRestaurant = new Restaurant(bossName, tableNum);
-//        setTables(tableNum);
+        myRestaurant = new Restaurant(bossName);
+        myRestaurant.setTables(tableNum);
 
         while (!stop) {
             possibleNextStep();
@@ -62,15 +59,6 @@ public class FeastApp {
         bossName = input.next();
     }
 
-//    // MODIFIES: this
-//    // EFFECTS: initials the tables in the user's restaurant
-//    private void setTables(int tableNum) {
-//        tables = new ArrayList<>();
-//        for (int i = 0; i < tableNum; i++) {
-//            Table newTable = new Table();
-//            tables.add(newTable);
-//        }
-//    }
 
     // EFFECTS: displays the menu of next steps to the user
     private void possibleNextStep() {
@@ -219,7 +207,6 @@ public class FeastApp {
     private void addCustomerToWaitlist() {
         boolean keepGoing = true;
         Customer newCustomer;
-        List<Customer> waitlist = myRestaurant.getWaitlist();
 
         while (keepGoing) {
             System.out.println("Entry the customer's name (Customer name)");
@@ -231,7 +218,7 @@ public class FeastApp {
                 System.out.println("\nEntry the customer's phone number (Integer)");
                 int phoneNumber = input.nextInt();
                 newCustomer = new Customer(customerName, phoneNumber);
-                waitlist.add(newCustomer);
+                myRestaurant.addCustomerToWaitlist(newCustomer);
                 System.out.println("\nThis customer has been added!");
 
             }
@@ -285,7 +272,7 @@ public class FeastApp {
 
     // EFFECTS: looks for the item in the order list according to the item name.
     //          returns that item if found, otherwise null;
-    private Item lookForItem(String itemName, ArrayList<Item> orderList) {
+    private Item lookForItem(String itemName, List<Item> orderList) {
         for (Item targetItem : orderList) {
             String name = targetItem.getName();
             if (name.contentEquals(itemName)) {

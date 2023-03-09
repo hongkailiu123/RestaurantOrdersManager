@@ -1,7 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.nio.file.Watchable;
+
 // Represents a customer (waiting for a table) having a String name and an Integer phone number
-public class Customer {
+public class Customer implements Writable {
     private String name;
     private int phoneNumber;
 
@@ -38,4 +43,11 @@ public class Customer {
 
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("phoneNumber", phoneNumber);
+        return json;
+    }
 }

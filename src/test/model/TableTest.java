@@ -1,10 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import static java.util.stream.Collectors.*;
+import java.util.LinkedList;
+import java.util.List;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TableTest {
@@ -28,10 +33,10 @@ public class TableTest {
     @Test
     void testAddOneItem(){
         Item i1 = new Item("鱼香肉丝",35);
-        ArrayList<Item> myList = new ArrayList<>();
+        List<Item> myList = new LinkedList<>();
         myList.add(i1);
         tableTest.addItem(i1);
-        ArrayList<Item> result = tableTest.getOrderList();
+        List<Item> result = tableTest.getOrderList();
         assertEquals(result, myList);
     }
 
@@ -41,7 +46,7 @@ public class TableTest {
         Item i2 = new Item("宫保鸡丁",40);
         Item i3 = new Item("兰州牛肉面",20);
 
-        ArrayList<Item> myList = new ArrayList<>();
+        List<Item> myList = new LinkedList<>();
         myList.add(i1);
         myList.add(i2);
         myList.add(i3);
@@ -50,7 +55,7 @@ public class TableTest {
         tableTest.addItem(i2);
         tableTest.addItem(i3);
 
-        ArrayList<Item> result = tableTest.getOrderList();
+        List<Item> result = tableTest.getOrderList();
         assertEquals(result, myList);
     }
 
@@ -59,7 +64,7 @@ public class TableTest {
         Item i1 = new Item("鱼香肉丝",35);
         Item i2 = new Item("宫保鸡丁",40);
 
-        ArrayList<Item> myList = new ArrayList<>();
+        List<Item> myList = new LinkedList<>();
         myList.add(i1);
         myList.add(i2);
         myList.add(i1);
@@ -68,7 +73,7 @@ public class TableTest {
         tableTest.addItem(i2);
         tableTest.addItem(i1);
 
-        ArrayList<Item> result = tableTest.getOrderList();
+        List<Item> result = tableTest.getOrderList();
         assertEquals(result, myList);
     }
 
@@ -78,7 +83,7 @@ public class TableTest {
         Item i1 = new Item("鱼香肉丝",35);
         Item i2 = new Item("宫保鸡丁",40);
 
-        ArrayList<Item> myList = new ArrayList<>();
+        List<Item> myList = new LinkedList<>();
         myList.add(i2);
 
         tableTest.addItem(i1);
@@ -86,14 +91,14 @@ public class TableTest {
 
         tableTest.removeItem(i1);
 
-        ArrayList<Item> result = tableTest.getOrderList();
+        List<Item> result = tableTest.getOrderList();
         assertEquals(result, myList);
 
     }
 
-    int countOccurrenceHelper(Item item, ArrayList<Item> itemArrayList) {
+    int countOccurrenceHelper(Item item, List<Item> itemLinkedList) {
         int result = 0;
-        for (Item i : itemArrayList) {
+        for (Item i : itemLinkedList) {
             if (i==item) {
                 result++;
             }
@@ -116,7 +121,7 @@ public class TableTest {
         tableTest.removeItem(i1);
 
         int size2 =  tableTest.getOrderList().size();
-        ArrayList<Item> resultList = tableTest.getOrderList();
+        List<Item> resultList = tableTest.getOrderList();
 
         assertEquals(countOccurrenceHelper(i2, resultList), 1 );
         assertEquals(size1-1, size2 );
@@ -214,6 +219,53 @@ public class TableTest {
         assertEquals(tableTest.getTotalAmount(), 0.0);
         assertEquals(tableTest.getOrderList(), new ArrayList<Item>());
         assertTrue(tableTest.getStatus());
+    }
+
+    @Test
+    void testSetTableNum() {
+        int tableNumTest = tableTest.getTableNumber();
+        tableTest.setTableNum(tableNumTest + 1);
+        assertEquals(tableTest.getTableNumber(), tableNumTest + 1);
+        tableTest.setTableNum(tableNumTest - 2);
+        assertEquals(tableTest.getTableNumber(), tableNumTest - 2);
+    }
+
+    @Test
+    void testToJsonEmptyOrderlistTrueStatus() {
+        JSONObject jsonTest = tableTest.toJson();
+        assertEquals(jsonTest.getInt("tableNum"),tableTest.getTableNumber());
+        assertEquals(jsonTest.getBoolean("status"),tableTest.getStatus());
+        assertTrue(jsonTest.getJSONArray("orderList").isEmpty());
+        assertEquals(jsonTest.getDouble("totalAmount"),tableTest.getTotalAmount());
+    }
+
+    @Test
+    void testToJsonTwoSizeOrderlistFalseStatus() {
+        Item item0 = new Item("item1",10.0);
+        Item item1 = new Item("item2",25.1);
+        tableTest.addItem(item0);
+        tableTest.addItem(item1);
+        JSONObject jsonTest = tableTest.toJson();
+
+        assertEquals(jsonTest.getInt("tableNum"),tableTest.getTableNumber());
+        assertEquals(jsonTest.getBoolean("status"),tableTest.getStatus());
+
+        List<Item> orderlist = tableTest.getOrderList();
+        JSONArray jsonOrderlist = jsonTest.getJSONArray("orderList");
+        assertFalse(jsonOrderlist.isEmpty());
+        int orderListSize = orderlist.size();
+        assertEquals(orderListSize,2);
+        assertTrue(jsonOrderlist.isNull(orderListSize));
+
+        JSONObject jsonItem0 = (JSONObject) jsonOrderlist.get(0);
+        JSONObject jsonItem1 = (JSONObject) jsonOrderlist.get(1);
+        assertEquals(jsonItem0.getString("name"),item0.getName());
+        assertEquals(jsonItem0.getDouble("price"),item0.getPrice());
+        assertEquals(jsonItem1.getString("name"),item1.getName());
+        assertEquals(jsonItem1.getDouble("price"),item1.getPrice());
+
+
+        assertEquals(jsonTest.getDouble("totalAmount"),tableTest.getTotalAmount());
     }
 
     }

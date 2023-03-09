@@ -1,0 +1,48 @@
+{
+  "tables": [
+    {
+      "totalAmount": 0,
+      "tableNum": 1,
+      "orderList": [],
+      "status": true
+    },
+    {
+      "totalAmount": 10,
+      "tableNum": 2,
+      "orderList": [{
+        "price": 10,
+        "name": "Noodle"
+      }],
+      "status": true
+    },
+    {
+      "totalAmount": 0,
+      "tableNum": 3,
+      "orderList": [],
+      "status": true
+    },
+    {
+      "totalAmount": 0,
+      "tableNum": 4,
+      "orderList": [],
+      "status": true
+    },
+    {
+      "totalAmount": 0,
+      "tableNum": 5,
+      "orderList": [],
+      "status": true
+    }
+  ],
+  "name": "Kai",
+  "waitlist": [
+    {
+      "phoneNumber": 111,
+      "name": "Kai"
+    },
+    {
+      "phoneNumber": 222222,
+      "name": "Joy"
+    }
+  ]
+}

@@ -1,10 +1,11 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class ItemTest{
 
@@ -33,5 +34,13 @@ public class ItemTest{
     void testSetPrice() {
         itemTest.setPrice(30.1);
         assertEquals(itemTest.getPrice(),30.1);
+    }
+
+
+    @Test
+    void testToJson() {
+        JSONObject jsonTest = itemTest.toJson();
+        assertEquals(jsonTest.getString("name"),itemTest.getName());
+        assertEquals(jsonTest.getDouble("price"),itemTest.getPrice());
     }
 }

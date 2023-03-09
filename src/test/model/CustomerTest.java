@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,5 +27,12 @@ class CustomerTest {
                 "[Dear " + customerTest.getName() + ", the table for you is ready! " +
                         "Please show up on the waiting " + "area]" + " to phone number: "
                         + customerTest.getPhoneNumber());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject jsonTest = customerTest.toJson();
+        assertEquals(jsonTest.getString("name"),customerTest.getName());
+        assertEquals(jsonTest.getInt("phoneNumber"),customerTest.getPhoneNumber());
     }
 }

@@ -1,14 +1,20 @@
 package model;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.util.LinkedList;
+import java.util.List;
+
 
 // Represents a table (in a restaurant) having a number, status, orderList, and total amount.
-public class Table {
+public class Table implements Writable {
     private static int nextTableNum = 1;
 
-    private int tableNum;                // Table number
+    private int tableNum;               // Table number
     private boolean status;             // Status (available or not)
-    private ArrayList<Item> orderList;  // the order list that records the items ordered
+    private List<Item> orderList;  // the order list that records the items ordered
     private double totalAmount;         // the current value of the total amount
 
 
@@ -19,7 +25,7 @@ public class Table {
     public Table() {
         tableNum = nextTableNum++;
         status = true;
-        orderList = new ArrayList<>();
+        orderList = new LinkedList<>();
         totalAmount = 0;
     }
 
@@ -62,7 +68,7 @@ public class Table {
     /*
      * EFFECTS: return this table's order list
      */
-    public ArrayList<Item> getOrderList() {
+    public List<Item> getOrderList() {
         return orderList;
     }
 
@@ -80,6 +86,16 @@ public class Table {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: set this table's status
+     */
+    public void setTableNum(int tableNum) {
+        this.tableNum = tableNum;
+    }
+
 
     /*
      * EFFECTS: return the string representation of the bill that lists
@@ -118,4 +134,24 @@ public class Table {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("tableNum", tableNum);
+        json.put("status",status);
+        json.put("orderList",itemsToJson());
+        json.put("totalAmount",totalAmount);
+        return json;
+    }
+
+    // EFFECTS: returns orderList in this table as a JSON array
+    private JSONArray itemsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Item i : orderList) {
+            jsonArray.put(i.toJson());
+        }
+
+        return jsonArray;
+    }
 }
