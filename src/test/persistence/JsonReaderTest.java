@@ -37,9 +37,9 @@ public class JsonReaderTest extends JsonTest {
         try {
             Restaurant newRestaurant = new Restaurant("Kai");
             Restaurant myRestaurant = reader.read();
-            assertEquals(myRestaurant.getBossName(),"Kai");
-            assertEquals(myRestaurant.getTables().size(),0);
-            assertEquals(myRestaurant.getWaitlist().size(),0);
+            assertEquals(myRestaurant.getBossName(), "Kai");
+            assertEquals(myRestaurant.getTables().size(), 0);
+            assertEquals(myRestaurant.getWaitlist().size(), 0);
         } catch (IOException e) {
             fail("IOException was not expected");
         }
@@ -49,17 +49,17 @@ public class JsonReaderTest extends JsonTest {
     void testReaderRegularRestaurant() {
         Restaurant regularRestaurant = new Restaurant("Kai");
         regularRestaurant.setTables(5);
-        regularRestaurant.getTables().get(1).addItem(new Item("Noodle",10.0));
-        regularRestaurant.addCustomerToWaitlist(new Customer("Kai","111"));
-        regularRestaurant.addCustomerToWaitlist(new Customer("Joy","222222"));
+        regularRestaurant.getTables().get(1).addItem(new Item("Noodle", 10.0));
+        regularRestaurant.addCustomerToWaitlist(new Customer("Kai", "111"));
+        regularRestaurant.addCustomerToWaitlist(new Customer("Joy", "222222"));
 
         JsonReader reader = new JsonReader("./data/testReaderRegularRestaurant.json");
         try {
             Restaurant myRestaurant = reader.read();
-            assertEquals(myRestaurant.getTables().size(),5);
-            assertEquals(myRestaurant.getWaitlist().size(),2);
-            checkTables(myRestaurant.getTables(),regularRestaurant.getTables());
-            checkWaitlist(myRestaurant.getWaitlist(),regularRestaurant.getWaitlist());
+            assertEquals(myRestaurant.getTables().size(), 5);
+            assertEquals(myRestaurant.getWaitlist().size(), 2);
+            checkTables(myRestaurant.getTables(), regularRestaurant.getTables());
+            checkWaitlist(myRestaurant.getWaitlist(), regularRestaurant.getWaitlist());
         } catch (IOException e) {
             fail("IOException was not expected");
         }

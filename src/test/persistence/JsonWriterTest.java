@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  *    Availability: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
  */
 
-public class JsonWriterTest extends JsonTest{
+public class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterNonexistentFile() {
@@ -58,9 +58,9 @@ public class JsonWriterTest extends JsonTest{
         try {
             Restaurant myRestaurant = new Restaurant("Kai");
             myRestaurant.setTables(5);
-            myRestaurant.getTables().get(1).addItem(new Item("Noodle",10.0));
-            myRestaurant.addCustomerToWaitlist(new Customer("Kai","111"));
-            myRestaurant.addCustomerToWaitlist(new Customer("Joy","222222"));
+            myRestaurant.getTables().get(1).addItem(new Item("Noodle", 10.0));
+            myRestaurant.addCustomerToWaitlist(new Customer("Kai", "111"));
+            myRestaurant.addCustomerToWaitlist(new Customer("Joy", "222222"));
 
             JsonWriter writer = new JsonWriter("./data/testWriterRegularRestaurant.json");
             writer.open();
@@ -76,7 +76,7 @@ public class JsonWriterTest extends JsonTest{
             checkTables(tablesWriter, myRestaurant.getTables());
 
             List<Customer> waitlistWriter = restaurantWriter.getWaitlist();
-            assertEquals(waitlistWriter.size(),myRestaurant.getWaitlist().size());
+            assertEquals(waitlistWriter.size(), myRestaurant.getWaitlist().size());
             checkWaitlist(waitlistWriter, myRestaurant.getWaitlist());
 
         } catch (IOException e) {

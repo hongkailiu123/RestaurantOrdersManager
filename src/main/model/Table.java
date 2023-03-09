@@ -103,7 +103,7 @@ public class Table implements Writable {
      */
     public String getBill() {
         String result = "";
-        for (Item item: orderList) {
+        for (Item item : orderList) {
             result = result.concat("\n Item Name: " + item.getName() + " ｜ Item Price :" + item.getPrice());
         }
 
@@ -138,9 +138,9 @@ public class Table implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("tableNum", tableNum);
-        json.put("status",status);
-        json.put("orderList",itemsToJson());
-        json.put("totalAmount",totalAmount);
+        json.put("status", status);
+        json.put("orderList", itemsToJson());
+        json.put("totalAmount", totalAmount);
         return json;
     }
 

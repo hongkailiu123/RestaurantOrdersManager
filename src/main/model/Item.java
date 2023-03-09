@@ -53,8 +53,8 @@ public class Item implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name",name);
-        json.put("price",price);
+        json.put("name", name);
+        json.put("price", price);
         return json;
     }
 }

@@ -17,8 +17,8 @@ class CustomerTest {
 
     @Test
     void testConstructor() {
-        assertEquals(customerTest.getName(),"CustomerTest");
-        assertEquals(customerTest.getPhoneNumber(),"1234567890");
+        assertEquals(customerTest.getName(), "CustomerTest");
+        assertEquals(customerTest.getPhoneNumber(), "1234567890");
     }
 
     @Test
@@ -32,7 +32,7 @@ class CustomerTest {
     @Test
     void testToJson() {
         JSONObject jsonTest = customerTest.toJson();
-        assertEquals(jsonTest.getString("name"),customerTest.getName());
-        assertEquals(jsonTest.getString("phoneNumber"),customerTest.getPhoneNumber());
+        assertEquals(jsonTest.getString("name"), customerTest.getName());
+        assertEquals(jsonTest.getString("phoneNumber"), customerTest.getPhoneNumber());
     }
 }
