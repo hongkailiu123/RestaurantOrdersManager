@@ -8,6 +8,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
+ *    Title: JsonSerializationDemo
+ *    Author: Paul Carter
+ *    Date: 16 Oct 2021
+ *    Availability: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ */
+
 public class JsonTest {
     protected void checkTables(List<Table> tables1, List<Table> tables2) {
         assertEquals(tables1.size(), tables2.size());

@@ -13,6 +13,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/*
+ *    Title: JsonSerializationDemo
+ *    Author: Paul Carter
+ *    Date: 16 Oct 2021
+ *    Availability: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ */
+
 public class JsonWriterTest extends JsonTest{
 
     @Test
@@ -52,8 +59,8 @@ public class JsonWriterTest extends JsonTest{
             Restaurant myRestaurant = new Restaurant("Kai");
             myRestaurant.setTables(5);
             myRestaurant.getTables().get(1).addItem(new Item("Noodle",10.0));
-            myRestaurant.addCustomerToWaitlist(new Customer("Kai",111));
-            myRestaurant.addCustomerToWaitlist(new Customer("Joy",222222));
+            myRestaurant.addCustomerToWaitlist(new Customer("Kai","111"));
+            myRestaurant.addCustomerToWaitlist(new Customer("Joy","222222"));
 
             JsonWriter writer = new JsonWriter("./data/testWriterRegularRestaurant.json");
             writer.open();

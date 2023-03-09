@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.Stream;
 
 /*
@@ -51,7 +49,7 @@ public class JsonReader {
     }
 
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses restaurant from JSON object and returns it
     private Restaurant parseRestaurant(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Restaurant restaurant = new Restaurant(name);
@@ -75,8 +73,6 @@ public class JsonReader {
     private void addTable(Restaurant restaurant, JSONObject jsonObject) {
         int tableNum = jsonObject.getInt("tableNum");
         boolean status = jsonObject.getBoolean("status");
-//        List<Item> orderList = new LinkedList<>();
-//        double totalAmount = jsonObject.getDouble("totalAmount");
         Table table = new Table();
         table.setTableNum(tableNum);
         table.setStatus(status);
@@ -117,7 +113,7 @@ public class JsonReader {
     // EFFECTS: parses customer from JSON and adds it to restaurant
     private void addCustomer(Restaurant restaurant, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        int phoneNumber = jsonObject.getInt("phoneNumber");
+        String phoneNumber = jsonObject.getString("phoneNumber");
         Customer customer = new Customer(name, phoneNumber);
         restaurant.addCustomerToWaitlist(customer);
     }

@@ -10,6 +10,13 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/*
+ *    Title: JsonSerializationDemo
+ *    Author: Paul Carter
+ *    Date: 16 Oct 2021
+ *    Availability: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ */
+
 public class JsonReaderTest extends JsonTest {
 
     @Test
@@ -43,8 +50,8 @@ public class JsonReaderTest extends JsonTest {
         Restaurant regularRestaurant = new Restaurant("Kai");
         regularRestaurant.setTables(5);
         regularRestaurant.getTables().get(1).addItem(new Item("Noodle",10.0));
-        regularRestaurant.addCustomerToWaitlist(new Customer("Kai",111));
-        regularRestaurant.addCustomerToWaitlist(new Customer("Joy",222222));
+        regularRestaurant.addCustomerToWaitlist(new Customer("Kai","111"));
+        regularRestaurant.addCustomerToWaitlist(new Customer("Joy","222222"));
 
         JsonReader reader = new JsonReader("./data/testReaderRegularRestaurant.json");
         try {

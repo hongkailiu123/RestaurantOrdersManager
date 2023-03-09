@@ -3,18 +3,15 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.nio.file.Watchable;
-
-// Represents a customer (waiting for a table) having a String name and an Integer phone number
+// Represents a customer (waiting for a table) having a String name and a String phone number
 public class Customer implements Writable {
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
 
     /*
-     * REQUIRES: phoneNumber must be a positive and 10-digit number
      * EFFECTS: create a customer with given name and phone number
      */
-    public Customer(String name, int phoneNumber) {
+    public Customer(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
@@ -27,9 +24,9 @@ public class Customer implements Writable {
     }
 
     /*
-     * EFFECTS: return the phone number of this customer
+     * EFFECTS: return the phone number string representation of this customer
      */
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

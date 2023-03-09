@@ -4,8 +4,12 @@ import model.Customer;
 import model.Item;
 import model.Restaurant;
 import model.Table;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +19,9 @@ public class FeastApp {
     private Scanner input;
     private int tableNum;
     private String bossName;
+    private static final String jsonDestination = "./data/aStateOfRestaurant.json";
+    private JsonReader reader;
+    private JsonWriter writer;
 
 
     // EFFECTS: runs the feast app
@@ -30,14 +37,20 @@ public class FeastApp {
         String nextAction;
 
         askTableNum();
-        askBossName();
-        myRestaurant = new Restaurant(bossName);
-        myRestaurant.setTables(tableNum);
+        if (tableNum == -1) {
+            loadAState();
+            this.tableNum = myRestaurant.getTables().size();
+        } else {
+            askBossName();
+            myRestaurant = new Restaurant(bossName);
+            myRestaurant.setTables(tableNum);
+        }
 
         while (!stop) {
             possibleNextStep();
             nextAction = input.next();
             if (nextAction.equals("s")) {
+                reminderToSave();
                 stop = true;
             } else {
                 processNextStep(nextAction);
@@ -45,14 +58,19 @@ public class FeastApp {
         }
     }
 
-    // EFFECTS: prompts the user entry the number of tables (the size of that ArrayList<Table>)
+    // MODIFIES: this
+    // EFFECTS: prompts the user entry the number of tables (the size of that ArrayList<Table>) or load a state
+    //          of restaurant from file
     private void askTableNum() {
         System.out.println("Entry the number of tables that are ready for guests in your restaurant (Integer).");
+        System.out.println("Or");
+        System.out.println("Entry -1 if you want to load a state of restaurant from file");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         tableNum = input.nextInt();
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user entry the boss name
     private void askBossName() {
         System.out.println("Entry the boss name (String).");
@@ -62,7 +80,7 @@ public class FeastApp {
 
     // EFFECTS: displays the menu of next steps to the user
     private void possibleNextStep() {
-        System.out.print("Possible options");
+        System.out.print("\nPossible options");
         System.out.print("\nSelect from:");
         System.out.print("\n    TO -> Take the order");
         System.out.print("\n    RI -> Remove an item");
@@ -71,6 +89,8 @@ public class FeastApp {
         System.out.print("\n    CSA -> Check the statuses for all tables");
         System.out.print("\n    AC -> Add a customer to the waitlist");
         System.out.print("\n    RC -> Remove a customer from the waitlist");
+        System.out.print("\n    SF -> Save current state of FeastApp entirely to a file");
+        System.out.print("\n    LF -> Load a state of FeastApp from file");
         System.out.println("\n    S-> stop");
     }
 
@@ -90,6 +110,10 @@ public class FeastApp {
             removeCustomerFromWaitlist();
         } else if (nextAction.equalsIgnoreCase("CSA")) {
             checkStatusForAllTable();
+        } else if (nextAction.equalsIgnoreCase("SF")) {
+            saveEntireState();
+        } else if (nextAction.equalsIgnoreCase("LF")) {
+            loadAState();
         } else {
             System.out.println("\n Not valid option! Select one again");
         }
@@ -215,8 +239,8 @@ public class FeastApp {
             if ((customerName.equalsIgnoreCase("T"))) {
                 keepGoing = false;
             } else {
-                System.out.println("\nEntry the customer's phone number (Integer)");
-                int phoneNumber = input.nextInt();
+                System.out.println("\nEntry the customer's phone number (String representation)");
+                String phoneNumber = input.next();
                 newCustomer = new Customer(customerName, phoneNumber);
                 myRestaurant.addCustomerToWaitlist(newCustomer);
                 System.out.println("\nThis customer has been added!");
@@ -280,6 +304,44 @@ public class FeastApp {
             }
         }
         return null;
+    }
+
+
+    // EFFECTS: saves restaurant to file
+    private void saveEntireState() {
+        try {
+            writer = new JsonWriter(jsonDestination);
+            writer.open();
+            writer.write(myRestaurant);
+            writer.close();
+            System.out.println("Successfully write to file " + jsonDestination);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file " + jsonDestination);
+        }
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads restaurant from file
+    private void loadAState() {
+        try {
+            reader = new JsonReader(jsonDestination);
+            myRestaurant = reader.read();
+            System.out.println("Successfully load from file " + jsonDestination);
+        } catch (IOException e) {
+            System.out.println("Unable to load from file " + jsonDestination);
+        }
+
+    }
+
+    // EFFECTS: reminds the user to save restaurant to file before the user stops
+    //          processes the saving option if the user want to do it
+    private void reminderToSave() {
+        System.out.println("Do you want to save the current state of restaurant to file? (yes or no)");
+        String saveWord = input.next();
+        if (saveWord.equalsIgnoreCase("yes")) {
+            saveEntireState();
+        }
     }
 
 }

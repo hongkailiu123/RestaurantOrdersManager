@@ -12,13 +12,13 @@ class CustomerTest {
 
     @BeforeEach
     void runBefore() {
-        customerTest = new Customer("CustomerTest", 1234567890);
+        customerTest = new Customer("CustomerTest", "1234567890");
     }
 
     @Test
     void testConstructor() {
         assertEquals(customerTest.getName(),"CustomerTest");
-        assertEquals(customerTest.getPhoneNumber(),1234567890);
+        assertEquals(customerTest.getPhoneNumber(),"1234567890");
     }
 
     @Test
@@ -33,6 +33,6 @@ class CustomerTest {
     void testToJson() {
         JSONObject jsonTest = customerTest.toJson();
         assertEquals(jsonTest.getString("name"),customerTest.getName());
-        assertEquals(jsonTest.getInt("phoneNumber"),customerTest.getPhoneNumber());
+        assertEquals(jsonTest.getString("phoneNumber"),customerTest.getPhoneNumber());
     }
 }

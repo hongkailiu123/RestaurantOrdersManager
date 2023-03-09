@@ -1,0 +1,66 @@
+{
+    "tables": [
+        {
+            "totalAmount": 0,
+            "tableNum": 1,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 2,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 3,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 4,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 5,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 6,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 7,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 8,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 9,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 10,
+            "orderList": [],
+            "status": true
+        }
+    ],
+    "name": "Kai",
+    "waitlist": []
+}

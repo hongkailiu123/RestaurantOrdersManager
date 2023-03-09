@@ -23,8 +23,7 @@ application to help operate my own restaurant.
 - As a user, I want to be able to check the status of all tables.
 - As a user, I want to be able to add a customer to the end of waitlist.
 - As a user, I want to be able to remove a first customer from the waitlist.
-- As a user, I want to be able to save the entire state of FeastApp to a file when I choose the *stop* option
-from the application menu. 
-- As a user, I want to be able to load a state of FeastApp from file
+- As a user, I want to be able to save the entire state of FeastApp to a file.
+- As a user, I want to be able to load a state of FeastApp from file.
 
 

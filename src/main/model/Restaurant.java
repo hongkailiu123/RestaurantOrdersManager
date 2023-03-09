@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-// Represents a restaurant with a Boss name, a fixed number of tables, and a waitlist of customers
+// Represents a restaurant with a String Boss name, a fixed number of tables, and a waitlist of customers
 public class Restaurant implements Writable {
     private String name;
     private List<Table> tables = new ArrayList<>();
     private List<Customer> waitlist = new LinkedList();
 
     /*
-     * EFFECTS: creates a restaurant with given boss name, an empty list of tables
+     * EFFECTS: creates a restaurant with a given boss name, an empty list of tables
      *          , and an empty waitlist
      */
     public Restaurant(String bossName) {
@@ -49,7 +49,7 @@ public class Restaurant implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: add c to the waitlist
+    // EFFECTS: adds c to the waitlist
     public void addCustomerToWaitlist(Customer c) {
         waitlist.add(c);
     }
@@ -64,7 +64,7 @@ public class Restaurant implements Writable {
     }
 
     // EFFECTS: returns tables in this restaurant as a JSON array
-    public JSONArray tablesToJson() {
+    private JSONArray tablesToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Table t : tables) {
@@ -74,8 +74,8 @@ public class Restaurant implements Writable {
         return jsonArray;
     }
 
-    // EFFECTS: returns  waitlist in this restaurant as a JSON array
-    public JSONArray waitlistToJson() {
+    // EFFECTS: returns waitlist in this restaurant as a JSON array
+    private JSONArray waitlistToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Customer c : waitlist) {

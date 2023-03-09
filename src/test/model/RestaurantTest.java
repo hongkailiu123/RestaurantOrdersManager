@@ -36,9 +36,9 @@ public class RestaurantTest {
     @Test
     void testAddCustomerToWaitlist() {
         assertEquals(restaurantTest.getWaitlist().size(),0);
-        restaurantTest.addCustomerToWaitlist(new Customer("KAI",111));
+        restaurantTest.addCustomerToWaitlist(new Customer("KAI","111"));
         assertEquals(restaurantTest.getWaitlist().size(),1);
-        restaurantTest.addCustomerToWaitlist(new Customer("Joy",222));
+        restaurantTest.addCustomerToWaitlist(new Customer("Joy","222"));
         assertEquals(restaurantTest.getWaitlist().size(),2);
     }
 
@@ -76,8 +76,8 @@ public class RestaurantTest {
 
     @Test
     void testToJsonTwoSizeWaitlistEmptyTables() {
-        restaurantTest.addCustomerToWaitlist(new Customer("KAI",111));
-        restaurantTest.addCustomerToWaitlist(new Customer("Joy",222));
+        restaurantTest.addCustomerToWaitlist(new Customer("KAI","111"));
+        restaurantTest.addCustomerToWaitlist(new Customer("Joy","222"));
         JSONObject jsonTest = restaurantTest.toJson();
 
         assertEquals(jsonTest.getString("name"), restaurantTest.getBossName());
@@ -89,12 +89,12 @@ public class RestaurantTest {
         JSONObject jsonCustomer0 =  (JSONObject) jsonWaitlist.get(0);
         Customer customer0 = waitlist.get(0);
         assertEquals(jsonCustomer0.getString("name"), customer0.getName());
-        assertEquals(jsonCustomer0.getInt("phoneNumber"), customer0.getPhoneNumber());
+        assertEquals(jsonCustomer0.getString("phoneNumber"), customer0.getPhoneNumber());
 
         JSONObject jsonCustomer1 =  (JSONObject) jsonWaitlist.get(1);
         Customer customer1 = waitlist.get(1);
         assertEquals(jsonCustomer1.getString("name"), customer1.getName());
-        assertEquals(jsonCustomer1.getInt("phoneNumber"), customer1.getPhoneNumber());
+        assertEquals(jsonCustomer1.getString("phoneNumber"), customer1.getPhoneNumber());
     }
 
 }

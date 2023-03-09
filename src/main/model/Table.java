@@ -10,12 +10,11 @@ import java.util.List;
 
 // Represents a table (in a restaurant) having a number, status, orderList, and total amount.
 public class Table implements Writable {
-    private static int nextTableNum = 1;
-
-    private int tableNum;               // Table number
-    private boolean status;             // Status (available or not)
-    private List<Item> orderList;  // the order list that records the items ordered
-    private double totalAmount;         // the current value of the total amount
+    private static int nextTableNum = 1; // Initial value of NextTableNum when no table exists
+    private int tableNum;                // Table number
+    private boolean status;              // Status (available or not)
+    private List<Item> orderList;        // The order list that records the items ordered
+    private double totalAmount;          // The current value of the total amount
 
 
     /*
@@ -31,8 +30,8 @@ public class Table implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: an item is added to this table's order list
-     *          its price is added to this table's total amount
+     * EFFECTS: adds item to this table's order list
+     *          , and the item's price is added to this table's total amount
      */
     public void addItem(Item item) {
         orderList.add(item);
@@ -43,8 +42,8 @@ public class Table implements Writable {
     /*
      * REQUIRES: the order list must not be empty
      * MODIFIES: this
-     * EFFECTS: an item is removed from this table's order list
-     *          its price is subtracted from this table's total amount
+     * EFFECTS: removes item from this table's order list
+     *          , and its price is subtracted from this table's total amount
      */
     public void removeItem(Item item) {
         orderList.remove(item);
@@ -52,28 +51,28 @@ public class Table implements Writable {
     }
 
     /*
-     * EFFECTS: return this table's status
+     * EFFECTS: returns this table's status
      */
     public boolean getStatus() {
         return status;
     }
 
     /*
-     * EFFECTS: return this table's table number
+     * EFFECTS: returns this table's table number
      */
     public int getTableNumber() {
         return tableNum;
     }
 
     /*
-     * EFFECTS: return this table's order list
+     * EFFECTS: returns this table's order list
      */
     public List<Item> getOrderList() {
         return orderList;
     }
 
     /*
-     * EFFECTS: return this table's total amount
+     * EFFECTS: returns this table's total amount
      */
     public double getTotalAmount() {
         return totalAmount;
@@ -81,7 +80,7 @@ public class Table implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: set this table's status
+     * EFFECTS: sets this table's status
      */
     public void setStatus(boolean status) {
         this.status = status;
@@ -90,7 +89,7 @@ public class Table implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: set this table's status
+     * EFFECTS: sets this table's table number
      */
     public void setTableNum(int tableNum) {
         this.tableNum = tableNum;
@@ -98,7 +97,7 @@ public class Table implements Writable {
 
 
     /*
-     * EFFECTS: return the string representation of the bill that lists
+     * EFFECTS: returns the string representation of the bill that lists
      *          all the items ordered with item name, item price, and
      *          the total amount of the bill
      */
@@ -124,8 +123,9 @@ public class Table implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: replace this table's order list with an empty order list
-     *          replace this table's total amount with 0.0
+     * EFFECTS: replaces this table's order list with an empty order list
+     *          , replaces this table's total amount with 0.0
+     *          , and sets this table's status as available (true)
      */
     public void cleanUpTable() {
         this.orderList.clear();
