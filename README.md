@@ -26,4 +26,20 @@ application to help operate my own restaurant.
 - As a user, I want to be able to save the entire state of FeastApp to a file.
 - As a user, I want to be able to load a state of FeastApp from file.
 
+## Instructions for Grader
+
+
+- You can see my visual component FeastAppImage at the pop-up window when the FeastApp starts.
+- You can choose to start a new restaurant state or reload the previous state 
+from file on a pop-up window when FeastApp starts.
+- You can choose to save the current restaurant state or not on a pop-up 
+window when closing FeastApp.
+- You can add items to a chosen table in the restaurant by clicking menu Orders -> Take order.
+- You can remove items for a chosen table in the restaurant by clicking menu Orders -> Remove item.
+- You can check out for a chosen table in the restaurant by clicking menu Orders -> Check out. 
+- You can add customers to the waitlist by clicking menu Waitlist -> Add customer.
+- You can remove customers from the waitlist by clicking menu Waitlist -> Remove customer.
+- You can change your target table (the table you want to do something with) by 
+choosing one in the ComboBox at the center of window.
+
 

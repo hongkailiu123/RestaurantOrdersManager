@@ -8,12 +8,15 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +64,7 @@ public class GraphicalUIFeastApp extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 int result = JOptionPane.showConfirmDialog(null, " Do you want save the current"
-                        + "FeastApp state? ", "Save or not", JOptionPane.YES_NO_CANCEL_OPTION,
+                                + "FeastApp state? ", "Save or not", JOptionPane.YES_NO_CANCEL_OPTION,
                         JOptionPane.QUESTION_MESSAGE);
 
                 if (result == JOptionPane.YES_OPTION) {
@@ -72,7 +75,7 @@ public class GraphicalUIFeastApp extends JFrame {
                 } else {
                     // user choose "Cancel", do nothing
                 }
-                }
+            }
         });
     }
 
@@ -89,9 +92,36 @@ public class GraphicalUIFeastApp extends JFrame {
 
         bgPanel.setLayout(null);
 
+        addFeastAppImage();
         askAndGetBossName();
         askAndGetTableNum();
         addSetUpButtons();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds the revised FeastAppImage that is read from file
+    private void addFeastAppImage() {
+        try {
+            BufferedImage originalFeastAppImage = ImageIO.read(new File("./data/feastAppImage.png"));
+            BufferedImage resizedFeastAppImage = resize(originalFeastAppImage, 100, 40);
+            ImageIcon feastAppImage = new ImageIcon(resizedFeastAppImage);
+            JLabel imageLabel = new JLabel(feastAppImage);
+            imageLabel.setBounds(230, 10, 100, 40);
+            bgPanel.add(imageLabel);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Unable to find the FeastApp image " + jsonDestination,
+                    "Lost Image", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // EFFECTS: a helper to help resize an BufferedImage, and returns the resized image.
+    public static BufferedImage resize(BufferedImage image, int newWidth, int newHeight) {
+        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, image.getType());
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(image, 0, 0, newWidth, newHeight, null);
+        g.dispose();
+        return resizedImage;
     }
 
     // MODIFIES: this
@@ -317,15 +347,15 @@ public class GraphicalUIFeastApp extends JFrame {
         tablesPanel.setBackground(Color.white);
         tablesPanel.setLayout(null);
         JLabel chosenTable = new JLabel("Please choose a Table");
-        chosenTable.setBounds(400,100,400,30);
+        chosenTable.setBounds(400, 100, 400, 30);
         JLabel defaultTable = new JLabel("(Default Table 1 is chosen)");
-        defaultTable.setBounds(390,130,400,30);
+        defaultTable.setBounds(390, 130, 400, 30);
         tablesPanel.add(chosenTable);
         tablesPanel.add(defaultTable);
 
         Vector tableNames = getTableNamesForComboBox();
         JComboBox comboBox = new JComboBox<>(tableNames);
-        comboBox.setBounds(350, 200, 250,30);
+        comboBox.setBounds(350, 200, 250, 30);
         addListenerToComboBox(chosenTable, comboBox, defaultTable);
         tablesPanel.add(comboBox);
         bgPanel.add(tablesPanel);
@@ -415,7 +445,7 @@ public class GraphicalUIFeastApp extends JFrame {
         removeCustomer.addActionListener(new ActionListener() {
 
             // MODIFIES: this
-            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user move the first
+            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user to move the first
             //          customer in the waitlist, and refreshes InfoPanel
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -448,7 +478,7 @@ public class GraphicalUIFeastApp extends JFrame {
         addCustomer.addActionListener(new ActionListener() {
 
             // MODIFIES: this
-            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user add customer to the waitlist,
+            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user to add customer to the waitlist,
             //          and refreshes InfoPanel
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -478,8 +508,8 @@ public class GraphicalUIFeastApp extends JFrame {
         });
     }
 
-    // MODIFIES
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: creates ordersMenu with few ordersMenuItems, and adds it to this
     private void addOrdersMenu() {
         JMenu orders = new JMenu("Orders");
         JMenuItem takeOrder = new JMenuItem("Take order");
@@ -498,17 +528,17 @@ public class GraphicalUIFeastApp extends JFrame {
         menuBar.add(orders);
     }
 
-    //
-    //
+    // MODIFIES: checkOut
+    // EFFECTS: adds ActionListener with specific implementation of actionPerformed to check out
     private void addListenerToCheckOut(JMenuItem checkOut) {
         checkOut.addActionListener(new ActionListener() {
 
-            //
-            //
+            // MODIFIES: this
+            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user to check out for the currentTable,
+            //          and refreshes InfoPanel
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel checkOutPanel = new JPanel();
-                //checkOutPanel.setLayout(new GridLayout(2,1));
 
                 JTextArea bill = new JTextArea();
                 bill.setText(currentTable.getBill());
@@ -530,13 +560,14 @@ public class GraphicalUIFeastApp extends JFrame {
         });
     }
 
-    //
-    //
+    // MODIFIES: removeItem
+    // EFFECTS: adds ActionListener with specific implementation of actionPerformed to removeItem
     private void addListenerToRemoveItem(JMenuItem removeItem) {
         removeItem.addActionListener(new ActionListener() {
 
-            //
-            //
+            // MODIFIES: this
+            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user to remove item
+            //          for the currentTable, and refreshes InfoPanel
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel inputsPanel = new JPanel();
@@ -593,12 +624,13 @@ public class GraphicalUIFeastApp extends JFrame {
     }
 
     // MODIFIES: takeOrder
-    // EFFECTS: adds ActionListener with specific actionPerformed method to takeOrder
+    // EFFECTS: adds ActionListener with specific implementation of actionPerformed to takeOrder
     private void addListenerToTakeOrder(JMenuItem takeOrder) {
         takeOrder.addActionListener(new ActionListener() {
 
-            // MODIFIES:
-            // EFFECTS:
+            // MODIFIES: this
+            // EFFECTS: display a JOptionPane.showConfirmDialog that enables the user to add item for the currentTable,
+            //          and refreshes InfoPanel
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel inputsPanel = new JPanel();
@@ -628,11 +660,7 @@ public class GraphicalUIFeastApp extends JFrame {
         });
     }
 
-
     public static void main(String[] args) {
         new GraphicalUIFeastApp();
     }
-
-
-
 }

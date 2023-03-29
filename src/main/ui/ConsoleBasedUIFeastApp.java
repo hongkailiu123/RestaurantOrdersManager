@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 // Restaurant operations application - Feast
-public class FeastApp {
+public class ConsoleBasedUIFeastApp {
     private Restaurant myRestaurant;
     private Scanner input;
     private int tableNum;
@@ -25,7 +25,7 @@ public class FeastApp {
 
 
     // EFFECTS: runs the feast app
-    public FeastApp() {
+    public ConsoleBasedUIFeastApp() {
         runFeast();
     }
 
@@ -342,6 +342,10 @@ public class FeastApp {
         if (saveWord.equalsIgnoreCase("yes")) {
             saveEntireState();
         }
+    }
+
+    public static void main(String[] args) {
+        new ConsoleBasedUIFeastApp();
     }
 
 }
