@@ -54,6 +54,7 @@ public class Restaurant implements Writable {
         waitlist.add(c);
     }
 
+    // EFFECTS: returns this as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject jsonR = new JSONObject();

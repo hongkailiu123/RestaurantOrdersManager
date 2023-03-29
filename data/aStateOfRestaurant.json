@@ -1,15 +1,21 @@
 {
     "tables": [
         {
-            "totalAmount": 0,
+            "totalAmount": 2345,
             "tableNum": 1,
-            "orderList": [],
+            "orderList": [{
+                "price": 2345,
+                "name": "suhsi"
+            }],
             "status": true
         },
         {
-            "totalAmount": 0,
+            "totalAmount": 32,
             "tableNum": 2,
-            "orderList": [],
+            "orderList": [{
+                "price": 32,
+                "name": "Butter chicken"
+            }],
             "status": true
         },
         {
@@ -59,8 +65,29 @@
             "tableNum": 10,
             "orderList": [],
             "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 11,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 12,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 13,
+            "orderList": [],
+            "status": true
         }
     ],
-    "name": "Kai",
-    "waitlist": []
+    "name": "sd",
+    "waitlist": [{
+        "phoneNumber": "434",
+        "name": "Joy"
+    }]
 }

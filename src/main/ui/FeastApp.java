@@ -39,7 +39,6 @@ public class FeastApp {
         askTableNum();
         if (tableNum == -1) {
             loadAState();
-            this.tableNum = myRestaurant.getTables().size();
         } else {
             askBossName();
             myRestaurant = new Restaurant(bossName);
@@ -327,6 +326,7 @@ public class FeastApp {
         try {
             reader = new JsonReader(jsonDestination);
             myRestaurant = reader.read();
+            this.tableNum = myRestaurant.getTables().size();
             System.out.println("Successfully load from file " + jsonDestination);
         } catch (IOException e) {
             System.out.println("Unable to load from file " + jsonDestination);

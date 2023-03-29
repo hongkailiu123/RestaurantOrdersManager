@@ -37,11 +37,11 @@
     "name": "Kai",
     "waitlist": [
         {
-            "phoneNumber": 111,
+            "phoneNumber": "111",
             "name": "Kai"
         },
         {
-            "phoneNumber": 222222,
+            "phoneNumber": "222222",
             "name": "Joy"
         }
     ]
