@@ -1,19 +1,19 @@
 {
     "tables": [
         {
-            "totalAmount": 119,
+            "totalAmount": 35.1,
             "tableNum": 1,
             "orderList": [
                 {
-                    "price": 20,
-                    "name": "sushi"
+                    "price": 14.5,
+                    "name": "Sushi"
                 },
                 {
-                    "price": 99,
-                    "name": "宫保鸡丁"
+                    "price": 20.6,
+                    "name": "Spicy Ramen"
                 }
             ],
-            "status": false
+            "status": true
         },
         {
             "totalAmount": 0,
@@ -68,8 +68,365 @@
             "tableNum": 10,
             "orderList": [],
             "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 11,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 12,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 13,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 14,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 15,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 16,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 17,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 18,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 19,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 20,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 21,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 22,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 23,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 24,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 25,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 26,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 27,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 28,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 29,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 30,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 31,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 32,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 33,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 34,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 35,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 36,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 37,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 38,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 39,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 40,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 41,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 42,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 43,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 44,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 45,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 46,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 47,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 48,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 49,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 50,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 51,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 52,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 53,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 54,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 55,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 56,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 57,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 58,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 59,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 60,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 61,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 62,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 63,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 64,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 65,
+            "orderList": [],
+            "status": true
+        },
+        {
+            "totalAmount": 0,
+            "tableNum": 66,
+            "orderList": [],
+            "status": true
         }
     ],
     "name": "Kai",
-    "waitlist": []
+    "waitlist": [
+        {
+            "phoneNumber": "1234567890",
+            "name": "Joy"
+        },
+        {
+            "phoneNumber": "0987654321",
+            "name": "Kai"
+        },
+        {
+            "phoneNumber": "6785904321",
+            "name": "Alex"
+        },
+        {
+            "phoneNumber": "9326498632",
+            "name": "Jason "
+        },
+        {
+            "phoneNumber": "2345687654",
+            "name": "Dave "
+        }
+    ]
 }

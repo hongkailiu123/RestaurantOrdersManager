@@ -29,7 +29,7 @@ application to help operate my own restaurant.
 ## Instructions for Grader
 
 
-- You can see my visual component FeastAppImage at the pop-up window when the FeastApp starts.
+- You can see my visual component, which is FeastAppImage, at the pop-up window when the FeastApp starts.
 - You can choose to start a new restaurant state or reload the previous state 
 from file on a pop-up window when FeastApp starts.
 - You can choose to save the current restaurant state or not on a pop-up 

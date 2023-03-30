@@ -29,19 +29,19 @@ public class GraphicalUIFeastApp extends JFrame {
 
     private Restaurant myRestaurant;
     private int tableNum;
+    private Table currentTable;
+
     private static final String jsonDestination = "./data/aStateOfRestaurant.json";
     private JsonReader reader;
     private JsonWriter writer;
+
+    private JTextField bossNameField;
+    private JTextField tableNumField;
     private JPanel bgPanel;
     private JPanel infoPanel;
     private JScrollPane scrollItemsTablePane;
     private JScrollPane scrollWaitlistTablePane;
     private JMenuBar menuBar;
-
-    private Table currentTable;
-
-    private JTextField bossNameField;
-    private JTextField tableNumField;
 
     // EFFECTS: runs GUI version feast app
     public GraphicalUIFeastApp() {
@@ -151,6 +151,7 @@ public class GraphicalUIFeastApp extends JFrame {
     private void addListenerToLoadButton(JButton loadButton) {
         loadButton.addActionListener(new ActionListener() {
 
+            // MODIFIES: this
             // EFFECTS: loads the previous restaurant state from file, removes BgPanel,
             //          assigns myRestaurant.getTables().get(0) to currentTable as the default table,
             //          initials the main window, and refreshes InfoPanel
@@ -188,6 +189,7 @@ public class GraphicalUIFeastApp extends JFrame {
     private void addListenerToConfirmButton(JButton confirmButton) {
         confirmButton.addActionListener(new ActionListener() {
 
+            // MODIFIES: this
             // EFFECTS: sets the parsed int to tableNum, creates a new restaurant according to user's inputs,
             //          removes BgPanel, assigns myRestaurant.getTables().get(0) to currentTable as the default table,
             //          initials the main window, and refreshes InfoPanel
@@ -230,7 +232,7 @@ public class GraphicalUIFeastApp extends JFrame {
         bgPanel.add(requestBossName);
 
         bossNameField = new JTextField();
-        bossNameField.setBounds(255, 70, 40, 30);
+        bossNameField.setBounds(223, 70, 100, 30);
         bgPanel.add(bossNameField);
     }
 
@@ -275,7 +277,7 @@ public class GraphicalUIFeastApp extends JFrame {
         bgPanel.add(infoPanel);
     }
 
-    // MODIFIES: infoPanel
+    // MODIFIES: this, infoPanel
     // EFFECTS: creates a waitlistPanel given String[][] array of waitlist data
     //          adds the waitlistPanel to infoPanel
     private void addWaitlistPanel(JPanel infoPanel, String[][] array) {
@@ -305,7 +307,7 @@ public class GraphicalUIFeastApp extends JFrame {
         return waitlistData;
     }
 
-    // MODIFIES: infoPanel
+    // MODIFIES: this, infoPanel
     // EFFECTS: creates a orderListPanel given String[][] array of orderlist data
     //          adds the orderListPanel to infoPanel
     private void addOrderListPanel(JPanel infoPanel, String[][] array) {
@@ -366,7 +368,7 @@ public class GraphicalUIFeastApp extends JFrame {
     private void addListenerToComboBox(JLabel chosenTable, JComboBox comboBox, JLabel defaultTable) {
         comboBox.addActionListener(new ActionListener() {
 
-            // MODIFIES: chosenTable, defaultTable
+            // MODIFIES: this, chosenTable, defaultTable
             // EFFECTS: sets text for JLabel chosenTable, sets JLabel defaultTable invisible,
             //          and updates InfoPanel given the table chosen by the user
             @Override
@@ -608,6 +610,7 @@ public class GraphicalUIFeastApp extends JFrame {
         return null;
     }
 
+    // MODIFIES: this
     // EFFECTS: saves restaurant to file
     private void saveEntireState() {
         try {
