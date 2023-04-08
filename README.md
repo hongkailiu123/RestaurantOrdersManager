@@ -43,3 +43,30 @@ window when closing FeastApp.
 choosing one in the ComboBox at the center of window.
 
 
+## Phase 4: Task 2 (a representative sample of EventLog)
+- Sat Apr 08 15:00:04 PDT 2023 
+- Dave(6046714354) has been added to the waitlist. 
+- Sat Apr 08 15:00:18 PDT 2023 
+- Jason(7789846966) has been added to the waitlist. 
+- Sat Apr 08 15:00:36 PDT 2023 
+- Alex(6049687228) has been added to the waitlist. 
+- Sat Apr 08 15:01:04 PDT 2023 
+- Joy(2369906038) has been added to the waitlist. 
+- Sat Apr 08 15:01:43 PDT 2023 
+- Item: 豉油鸡 ($30.0) is added for Table 1 
+- Sat Apr 08 15:02:05 PDT 2023 
+- Item: Sushi ($20.3) is added for Table 1 
+- Sat Apr 08 15:02:47 PDT 2023 
+- Item: Butter Chicken ($12.3) is added for Table 1 
+- Sat Apr 08 15:03:09 PDT 2023 
+- Item: 炒面 ($22.1) is added for Table 1 
+- Sat Apr 08 15:04:17 PDT 2023 
+- Item: 炒面 ($22.1) is removed for Table 1 
+- Sat Apr 08 15:04:42 PDT 2023 
+- Item: BBQ Pork ($23.5) is added for Table 3 
+- Sat Apr 08 15:04:50 PDT 2023 
+- Dave(6046714354) has been removed from the waitlist. 
+- Sat Apr 08 15:04:53 PDT 2023 
+- Jason(7789846966) has been removed from the waitlist.
+
+

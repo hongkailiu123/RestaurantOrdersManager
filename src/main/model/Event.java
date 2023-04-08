@@ -6,6 +6,8 @@ import java.util.Date;
 
 /**
  * Represents a FeastApp event.
+ *
+ * It is copied and adapted to FeastApp from AlarmSystem project
  */
 public class Event {
     private static final int HASH_CONSTANT = 13;

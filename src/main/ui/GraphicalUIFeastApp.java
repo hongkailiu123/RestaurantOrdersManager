@@ -59,6 +59,8 @@ public class GraphicalUIFeastApp extends JFrame {
 
             // EFFECTS: display a JOptionPane that remind the user to save the current restaurant state if
             //          the user want
+            //          print to the console all the events that have been logged since the application started
+            //          if the user choose to quit
             @Override
             public void windowClosing(WindowEvent e) {
                 int result = JOptionPane.showConfirmDialog(null, " Do you want save the current"
@@ -81,9 +83,8 @@ public class GraphicalUIFeastApp extends JFrame {
     }
 
     // EFFECTS: print to the console all the events that have been logged since the application started
-    //          clear EventLog after printing
+    //          if you loaded a previous state of FeastApp, the previous action events are not included.
     private void printEventsLogged() {
-
         for (Event e : EventLog.getInstance()) {
             System.out.println(e.toString());
         }
@@ -514,7 +515,8 @@ public class GraphicalUIFeastApp extends JFrame {
                 if (result == JOptionPane.OK_OPTION) {
                     String cname = stringField.getText();
                     String phNumber = phoneNumberField.getText();
-                    myRestaurant.getWaitlist().add(new Customer(cname, phNumber));
+                    myRestaurant.addCustomerToWaitlist(new Customer(cname, phNumber));
+
                 }
                 updateInfoPanel();
             }

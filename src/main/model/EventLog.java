@@ -9,6 +9,8 @@ import java.util.Iterator;
  * We use the Singleton Design Pattern to ensure that there is only
  * one EventLog in the FeastApp and that the FeastApp has global access
  * to the single instance of the EventLog.
+ *
+ * It is copied and adapted to FeastApp from AlarmSystem project
  */
 public class EventLog implements Iterable<Event> {
     /**

@@ -31,13 +31,14 @@ public class Table implements Writable {
     /*
      * MODIFIES: this
      * EFFECTS: adds item to this table's order list
+     *          logs this event to the Singleton EventLog
      *          , and the item's price is added to this table's total amount
      */
     public void addItem(Item item) {
         orderList.add(item);
         this.totalAmount += item.getPrice();
         EventLog.getInstance().logEvent(new Event("Item: " + item.getName()
-                + " ($" + item.getPrice() + ")" + " is added!"));
+                + " ($" + item.getPrice() + ")" + " is added for Table " + tableNum));
     }
 
     /*
@@ -55,13 +56,14 @@ public class Table implements Writable {
      * REQUIRES: the order list must not be empty
      * MODIFIES: this
      * EFFECTS: removes item from this table's order list
+     *           logs this event to the Singleton EventLog
      *          , and its price is subtracted from this table's total amount
      */
     public void removeItem(Item item) {
         orderList.remove(item);
         this.totalAmount -= item.getPrice();
         EventLog.getInstance().logEvent(new Event("Item: " + item.getName()
-                + " ($" + item.getPrice() + ")" + " is removed!"));
+                + " ($" + item.getPrice() + ")" + " is removed for Table " + tableNum));
     }
 
     /*

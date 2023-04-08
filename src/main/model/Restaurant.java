@@ -50,9 +50,11 @@ public class Restaurant implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds c to the waitlist
+    //          logs this event to the Singleton EventLog
     public void addCustomerToWaitlist(Customer c) {
         waitlist.add(c);
-        EventLog.getInstance().logEvent(new Event(c.getName() + " has been added to the waitlist."));
+        EventLog.getInstance().logEvent(new Event(c.getName() + "(" + c.getPhoneNumber() + ")"
+                + " has been added to the waitlist."));
     }
 
 
@@ -65,11 +67,12 @@ public class Restaurant implements Writable {
 
     // MODIFIES: this
     // EFFECTS: remove the first Customer in the waitlist
+    //          logs this event to the Singleton EventLog
     public void removeFirstCustomerFromWaitlist() {
         Customer customerToRemove = waitlist.get(0);
         waitlist.remove(0);
         EventLog.getInstance().logEvent(new Event(customerToRemove.getName()
-                + " has been removed from the waitlist."));
+                + "(" + customerToRemove.getPhoneNumber() + ")" + " has been removed from the waitlist."));
     }
 
     // EFFECTS: returns this as JSON object
@@ -103,6 +106,5 @@ public class Restaurant implements Writable {
 
         return jsonArray;
     }
-
 
 }
