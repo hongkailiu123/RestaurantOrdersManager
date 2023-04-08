@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-// Restaurant operations application - Feast
+// Restaurant operations application - FeastApp
 public class ConsoleBasedUIFeastApp {
     private Restaurant myRestaurant;
     private Scanner input;

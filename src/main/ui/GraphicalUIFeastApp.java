@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/// Restaurant operations application - GUIFeastApp
 public class GraphicalUIFeastApp extends JFrame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 700;
