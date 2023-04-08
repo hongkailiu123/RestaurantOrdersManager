@@ -78,6 +78,24 @@ public class TableTest {
     }
 
     @Test
+    void testLoadDuplicateItem() {
+        Item i1 = new Item("鱼香肉丝", 35);
+        Item i2 = new Item("宫保鸡丁", 40);
+
+        List<Item> myList = new LinkedList<>();
+        myList.add(i1);
+        myList.add(i2);
+        myList.add(i1);
+
+        tableTest.loadItem(i1);
+        tableTest.loadItem(i2);
+        tableTest.loadItem(i1);
+
+        List<Item> result = tableTest.getOrderList();
+        assertEquals(result, myList);
+    }
+
+    @Test
     void testRemoveOneItem() {
 
         Item i1 = new Item("鱼香肉丝", 35);

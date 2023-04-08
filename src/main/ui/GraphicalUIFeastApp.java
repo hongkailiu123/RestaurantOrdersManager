@@ -1,9 +1,7 @@
 package ui;
 
-import model.Customer;
-import model.Item;
-import model.Restaurant;
-import model.Table;
+import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -70,13 +68,26 @@ public class GraphicalUIFeastApp extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                     saveEntireState();
                     dispose();
+                    printEventsLogged();
                 } else if (result == JOptionPane.NO_OPTION) {
                     dispose();
+                    printEventsLogged();
                 } else {
                     // user choose "Cancel", do nothing
                 }
+
             }
         });
+    }
+
+    // EFFECTS: print to the console all the events that have been logged since the application started
+    //          clear EventLog after printing
+    private void printEventsLogged() {
+
+        for (Event e : EventLog.getInstance()) {
+            System.out.println(e.toString());
+        }
+
     }
 
 
@@ -465,7 +476,7 @@ public class GraphicalUIFeastApp extends JFrame {
                             "", JOptionPane.OK_CANCEL_OPTION);
 
                     if (result == JOptionPane.OK_OPTION) {
-                        myRestaurant.getWaitlist().remove(0);
+                        myRestaurant.removeFirstCustomerFromWaitlist();
                     }
                     updateInfoPanel();
                 }

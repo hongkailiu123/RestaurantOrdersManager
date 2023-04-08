@@ -42,6 +42,32 @@ public class RestaurantTest {
         assertEquals(restaurantTest.getWaitlist().size(), 2);
     }
 
+    @Test
+    void testLoadCustomerToWaitlist() {
+        assertEquals(restaurantTest.getWaitlist().size(), 0);
+        restaurantTest.loadCustomerToWaitlist(new Customer("KAI", "111"));
+        assertEquals(restaurantTest.getWaitlist().size(), 1);
+        restaurantTest.loadCustomerToWaitlist(new Customer("Joy", "222"));
+        assertEquals(restaurantTest.getWaitlist().size(), 2);
+    }
+
+    @Test
+    void testRemoveFirstCustomerFromWaitlist() {
+        assertEquals(restaurantTest.getWaitlist().size(), 0);
+        Customer customerKai = new Customer("KAI", "111");
+        restaurantTest.addCustomerToWaitlist(customerKai);
+        assertEquals(restaurantTest.getWaitlist().size(), 1);
+        Customer customerJoy = new Customer("Joy", "222");
+        restaurantTest.addCustomerToWaitlist(customerJoy);
+        assertEquals(restaurantTest.getWaitlist().size(), 2);
+
+        restaurantTest.removeFirstCustomerFromWaitlist();
+        assertEquals(restaurantTest.getWaitlist().size(), 1);
+        assertEquals(restaurantTest.getWaitlist().get(0), customerJoy);
+        restaurantTest.removeFirstCustomerFromWaitlist();
+        assertEquals(restaurantTest.getWaitlist().size(), 0);
+    }
+
 
     @Test
     void testToJsonEmptyWaitlistEmptyTables() {
@@ -96,5 +122,6 @@ public class RestaurantTest {
         assertEquals(jsonCustomer1.getString("name"), customer1.getName());
         assertEquals(jsonCustomer1.getString("phoneNumber"), customer1.getPhoneNumber());
     }
+
 
 }

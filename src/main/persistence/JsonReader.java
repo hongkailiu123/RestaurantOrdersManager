@@ -96,7 +96,7 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         double price = jsonObject.getDouble("price");
         Item item = new Item(name, price);
-        table.addItem(item);
+        table.loadItem(item);
     }
 
     // MODIFIES: restaurant
@@ -115,7 +115,7 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         String phoneNumber = jsonObject.getString("phoneNumber");
         Customer customer = new Customer(name, phoneNumber);
-        restaurant.addCustomerToWaitlist(customer);
+        restaurant.loadCustomerToWaitlist(customer);
     }
 
 

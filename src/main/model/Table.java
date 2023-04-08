@@ -36,6 +36,18 @@ public class Table implements Writable {
     public void addItem(Item item) {
         orderList.add(item);
         this.totalAmount += item.getPrice();
+        EventLog.getInstance().logEvent(new Event("Item: " + item.getName()
+                + " ($" + item.getPrice() + ")" + " is added!"));
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: loads (adds) item to this table's order list, and the item's price is added to this table's total amount
+     *          calls loadItem when loading a state from file, avoiding to log inappropriate events
+     */
+    public void loadItem(Item item) {
+        orderList.add(item);
+        this.totalAmount += item.getPrice();
     }
 
 
@@ -48,6 +60,8 @@ public class Table implements Writable {
     public void removeItem(Item item) {
         orderList.remove(item);
         this.totalAmount -= item.getPrice();
+        EventLog.getInstance().logEvent(new Event("Item: " + item.getName()
+                + " ($" + item.getPrice() + ")" + " is removed!"));
     }
 
     /*

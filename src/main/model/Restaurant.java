@@ -52,6 +52,24 @@ public class Restaurant implements Writable {
     // EFFECTS: adds c to the waitlist
     public void addCustomerToWaitlist(Customer c) {
         waitlist.add(c);
+        EventLog.getInstance().logEvent(new Event(c.getName() + " has been added to the waitlist."));
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: loads (adds) c to the waitlist
+    //          calls loadCustomerToWaitlist when loading a state from file, avoiding to log inappropriate events
+    public void loadCustomerToWaitlist(Customer c) {
+        waitlist.add(c);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: remove the first Customer in the waitlist
+    public void removeFirstCustomerFromWaitlist() {
+        Customer customerToRemove = waitlist.get(0);
+        waitlist.remove(0);
+        EventLog.getInstance().logEvent(new Event(customerToRemove.getName()
+                + " has been removed from the waitlist."));
     }
 
     // EFFECTS: returns this as JSON object
