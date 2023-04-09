@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * Represents a FeastApp event.
- *
+ * <p>
  * It is copied and adapted to FeastApp from AlarmSystem project
  */
 public class Event {

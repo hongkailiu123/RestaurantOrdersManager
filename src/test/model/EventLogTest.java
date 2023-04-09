@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Unit tests for the EventLog class
  * It is copied and adapted to FeastApp from AlarmSystem project
  */
+
 public class EventLogTest {
 	private Event e1;
 	private Event e2;

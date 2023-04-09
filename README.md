@@ -28,7 +28,6 @@ application to help operate my own restaurant.
 
 ## Instructions for Grader
 
-
 - You can see my visual component, which is FeastAppImage, at the pop-up window when the FeastApp starts.
 - You can choose to start a new restaurant state or reload the previous state 
 from file on a pop-up window when FeastApp starts.
@@ -44,6 +43,7 @@ choosing one in the ComboBox at the center of window.
 
 
 ## Phase 4: Task 2 (a representative sample of EventLog)
+
 - Sat Apr 08 15:00:04 PDT 2023 
 - Dave(6046714354) has been added to the waitlist. 
 - Sat Apr 08 15:00:18 PDT 2023 
@@ -69,4 +69,19 @@ choosing one in the ComboBox at the center of window.
 - Sat Apr 08 15:04:53 PDT 2023 
 - Jason(7789846966) has been removed from the waitlist.
 
+## Phase 4: Task 3 (refactoring plan)
 
+If I had more time to work on my project (FeastApp), I would refactor the GraphicalUIFeastApp class 
+(as well as the ConsoleBasedUIFeastApp class if needed). The current implementation of the GraphicalUIFeastApp class 
+is responsible for a wide range of tasks, including displaying JPanels, 
+creating all JMenus and JMenuItems, adding them to the main JFrame, listening for user actions, 
+and updating the FeastApp state and all JPanels. As a result, the GraphicalUIFeastApp class has become 
+overly complex, with low cohesion, making it difficult to read and less reusable.
+
+To address this issue, I propose breaking down the GraphicalUIFeastApp class into smaller,
+more focused classes that each handle a specific aspect of the application's user interface, 
+which will help to improve the overall cohesion of the codebase and make it easier to maintain 
+and extend in the future. For example, we could create separate classes to handle the creation and management 
+of JMenus and JMenuItems, the display of JPanels, and the processing of user actions. By dividing these 
+responsibilities among smaller, more specialized classes, we can achieve a more modular and flexible 
+design that is easier to understand and modify.
